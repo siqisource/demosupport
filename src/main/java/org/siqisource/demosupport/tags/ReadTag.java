@@ -13,8 +13,8 @@ import javax.servlet.jsp.tagext.SimpleTagSupport;
 
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.MapHandler;
-import org.siqisource.demosupport.NameConverter;
-import org.siqisource.demosupport.TagUtils;
+import org.siqisource.demosupport.utils.NameConverter;
+import org.siqisource.demosupport.utils.TagUtils;
 
 public class ReadTag extends SimpleTagSupport {
 
@@ -68,8 +68,10 @@ public class ReadTag extends SimpleTagSupport {
 		Map<String, String> result = new HashMap<String, String>();
 
 		for (Map.Entry<String, Object> entry : record.entrySet()) {
-			result.put(NameConverter.columnToProperty(entry.getKey()), entry
-					.getValue().toString());
+			
+			String value = (String) entry.getValue();
+			value = value == null ? "" : value;
+			result.put(NameConverter.columnToProperty(entry.getKey()), value);
 		}
 		return result;
 	}

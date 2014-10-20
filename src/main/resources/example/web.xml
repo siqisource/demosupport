@@ -18,36 +18,31 @@
 		<param-value>sa</param-value>
 	</context-param>
 
+	<filter>
+		<filter-name>demoSupportFilter</filter-name>
+		<filter-class>org.siqisource.demosupport.DemoSupportFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>demoSupportFilter</filter-name>
+		<url-pattern>*.do</url-pattern>
+	</filter-mapping>
+
 	<listener>
 		<listener-class>org.h2.server.web.DbStarter</listener-class>
 	</listener>
 
-	<listener>
-		<listener-class>org.siqisource.demosupport.InitListener</listener-class>
-	</listener>
-
-
-
-	<servlet>
-		<servlet-name>DispatchServlet</servlet-name>
-		<servlet-class>org.siqisource.demosupport.DispatchServlet</servlet-class>
-	</servlet>
 
 	<servlet>
 		<servlet-name>H2Console</servlet-name>
 		<servlet-class>org.h2.server.web.WebServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
-	
-	
+
 	<servlet-mapping>
 		<servlet-name>H2Console</servlet-name>
 		<url-pattern>/h2/*</url-pattern>
 	</servlet-mapping>
 
-	<servlet-mapping>
-		<servlet-name>DispatchServlet</servlet-name>
-		<url-pattern>*.do</url-pattern>
-	</servlet-mapping>
 
 </web-app>

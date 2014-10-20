@@ -1,4 +1,4 @@
-package org.siqisource.demosupport;
+package org.siqisource.demosupport.utils;
 
 import java.sql.Connection;
 import java.sql.SQLException;

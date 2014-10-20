@@ -15,8 +15,8 @@ import javax.servlet.jsp.tagext.SimpleTagSupport;
 
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.MapListHandler;
-import org.siqisource.demosupport.NameConverter;
-import org.siqisource.demosupport.TagUtils;
+import org.siqisource.demosupport.utils.NameConverter;
+import org.siqisource.demosupport.utils.TagUtils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -89,8 +89,10 @@ public class ListTag extends SimpleTagSupport {
 			Map<String, String> properties = new HashMap<String, String>();
 
 			for (Map.Entry<String, Object> entry : columns.entrySet()) {
+				String value = (String) entry.getValue();
+				value = value == null ? "" : value;
 				properties.put(NameConverter.columnToProperty(entry.getKey()),
-						String.valueOf(entry.getValue()));
+						value);
 			}
 
 			result.add(properties);

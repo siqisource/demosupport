@@ -1,4 +1,4 @@
-package org.siqisource.demosupport;
+package org.siqisource.demosupport.utils;
 
 public class NameConverter {
 

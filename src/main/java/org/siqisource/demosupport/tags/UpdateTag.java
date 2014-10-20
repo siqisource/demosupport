@@ -13,7 +13,7 @@ import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
 
 import org.apache.commons.dbutils.QueryRunner;
-import org.siqisource.demosupport.TagUtils;
+import org.siqisource.demosupport.utils.TagUtils;
 
 public class UpdateTag extends SimpleTagSupport {
 

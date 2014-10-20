@@ -10,7 +10,7 @@ import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
 
 import org.apache.commons.dbutils.QueryRunner;
-import org.siqisource.demosupport.NameConverter;
+import org.siqisource.demosupport.utils.NameConverter;
 
 public class DeleteBatchTag extends SimpleTagSupport {
 
