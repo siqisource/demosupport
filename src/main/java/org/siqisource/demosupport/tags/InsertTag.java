@@ -6,7 +6,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.JspException;
@@ -31,9 +30,9 @@ public class InsertTag extends SimpleTagSupport {
 		this.idKey = idKey;
 	}
 
+	@Override
 	public void doTag() throws JspException, IOException {
 		PageContext pageCtx = (PageContext) this.getJspContext();
-
 		HttpServletRequest request = (HttpServletRequest) pageCtx.getRequest();
 		try {
 			this.update(request);
@@ -55,34 +54,23 @@ public class InsertTag extends SimpleTagSupport {
 
 	protected String getSql(HttpServletRequest request,
 			List<String> sqlParamValues) throws SQLException {
-
 		Map<String, String> params = TagUtils.getUsefulParams(request,
 				tableName);
-		
 		if (!params.containsKey(idKey)) {
 			return null;
 		}
-
 		StringBuffer sbSql = new StringBuffer();
 		sbSql.append(" insert into ");
 		sbSql.append(tableName);
 		sbSql.append(" ( ");
-
 		boolean needAnd = false;
-
 		for (Map.Entry<String, String> entry : params.entrySet()) {
-
 			if (needAnd) {
 				sbSql.append(" , ");
 			}
 			String key = entry.getKey();
 			sbSql.append(key);
-			if (key.equals(idKey)) {
-				sqlParamValues.add(UUID.randomUUID().toString());
-			} else {
-				sqlParamValues.add(entry.getValue());
-			}
-
+			sqlParamValues.add(entry.getValue());
 			needAnd = true;
 		}
 		sbSql.append(" ) values ( ");
@@ -93,8 +81,6 @@ public class InsertTag extends SimpleTagSupport {
 			sbSql.append(" ? ");
 		}
 		sbSql.append(" ) ");
-
 		return sbSql.toString();
-
 	}
 }
