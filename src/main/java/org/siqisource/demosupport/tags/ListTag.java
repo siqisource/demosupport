@@ -66,7 +66,7 @@ public class ListTag extends SimpleTagSupport {
 		resultKey = resultKey == null ? "list" : resultKey;
 		if (json) {
 			ObjectMapper mapper = new ObjectMapper();
-			String result = mapper.writeValueAsString(json);
+			String result = mapper.writeValueAsString(list);
 			request.setAttribute(resultKey, result);
 		} else {
 			request.setAttribute(resultKey, list);
