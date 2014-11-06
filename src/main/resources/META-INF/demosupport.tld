@@ -40,6 +40,18 @@
 	</tag>
 	
 	<tag>
+		<description>Id Generator</description>
+		<name>id</name>
+		<tag-class>org.siqisource.demosupport.tags.IdTag</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<name>idKey</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	
+	<tag>
 		<description>Count</description>
 		<name>count</name>
 		<tag-class>org.siqisource.demosupport.tags.CountTag</tag-class>
